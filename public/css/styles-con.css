@@ -1,0 +1,123 @@
+body {
+    font-family: 'Noto Sans Thai', sans-serif;
+}
+/* ปรับสี Header */
+.custom-header {
+    background-color: #dc3545; /* สีแดง */
+    color: white;
+    padding: 15px 0;
+}
+
+.custom-header a {
+    color: white !important;
+}
+
+.custom-header .nav-link:hover {
+    text-decoration: underline;
+}
+
+/* ปรับโลโก้ */
+.logo {
+    width: 80px;
+    height: auto;
+}
+
+/* ปรับรูปภาพให้มีขอบเบลอ */
+.img-box {
+    display: block;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 15px; /* ขอบโค้งมน */
+}
+
+@media (max-width: 991px) { 
+    .navbar-nav .nav-link {
+        color: white;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        padding-left: 10px;
+    }
+    .navbar-nav{
+        margin-bottom: 10px;
+    }
+    .navbar-nav .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.3); /* เปลี่ยนสีพื้นหลัง */
+        color: #ffcc00; /* เปลี่ยนสีข้อความ */
+        border-radius: 5px; /* เพิ่มขอบมน */
+    }
+}
+.navbar-nav .nav-link.active {
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.2); /* เพิ่มพื้นหลังขุ่น */
+    border-radius: 5px; /* ทำให้มุมโค้งเล็กน้อย */
+    padding: 8px 15px;
+}
+
+.navbar-nav .nav-link {
+    transition: all 0.3s ease-in-out; /* ทำให้แอนิเมชันนุ่มนวล */
+    padding: 8px 15px;
+    border-radius: 8px; /* ทำให้ขอบมน */
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* เปลี่ยนพื้นหลังเมื่อนำเมาส์ไปชี้ */
+    color: #fff !important; /* เปลี่ยนสีตัวอักษร */
+}
+
+/* moldal VDO */
+.btn-video {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-video i {
+    font-size: 2rem;
+    color: black;
+}
+
+.btn-video:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+@media (min-width: 320px) {  
+    .custom-modal {
+        max-width: 95vw; /* กว้าง 95% ของหน้าจอ */
+    }
+}
+
+/* จอมือถือ (ต่ำกว่า 768px) */
+@media (min-width: 768px) {  
+    .custom-modal {
+        max-width: 90vw; /* กว้างขึ้น 90% ของหน้าจอ */
+    }
+}
+
+/* จอแท็บเล็ต (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {  
+    .custom-modal {
+        max-width: 85vw; /* กว้าง 80% ของหน้าจอ */
+    }
+}
+
+/* จอใหญ่ขึ้น (1024px ขึ้นไป) */
+@media (min-width: 1024px) {  
+    .custom-modal {
+        max-width: 75vw; /* กว้าง 75% ของหน้าจอ */
+    }
+}
+
+/* ปรับให้ modal อยู่กึ่งกลางและมีขนาดใหญ่ขึ้น */
+.custom-modal {
+    max-height: 90vh; /* สูงสุด 90% ของความสูงจอ */
+    height: auto;
+}
+
+/* ตัวอย่าง: ปรับขนาดไอคอนโปรไฟล์ */
+#profileDropdown img {
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
