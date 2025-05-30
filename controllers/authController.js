@@ -1,16 +1,35 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 
 exports.register = async (req, res) => {
-  const { name, email, password } = req.body;
-  if (await User.findOne({ email })) return res.status(400).json({ message: 'Email already exists' });
-  const passwordHash = await bcrypt.hash(password, 10);
-  const user = new User({ name, email, passwordHash });
-  await user.save();
-  res.json({ message: 'Registered' });
+  console.log('REGISTER BODY:', req.body); // DEBUG
+  const { name, email, password, phone, lineId } = req.body;
+
+  try {
+    let user = await User.findOne({ email });
+    if (user) {
+      return res.status(400).json({ msg: 'User already exists' });
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    user = new User({
+      name,
+      email,
+      phone,
+      lineId,
+      passwordHash: hashedPassword
+    });
+    await user.save();
+
+    res.status(201).json({ msg: 'User registered successfully' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
 };
 
 exports.login = async (req, res) => {
@@ -20,7 +39,14 @@ exports.login = async (req, res) => {
     return res.status(401).json({ message: 'Invalid credentials' });
   }
   const token = jwt.sign({ id: user._id, name: user.name }, process.env.JWT_SECRET, { expiresIn: '1d' });
-  res.json({ token, name: user.name });
+  // ส่งข้อมูลเพิ่ม
+  res.json({
+    token,
+    name: user.name,
+    email: user.email,
+    phone: user.phone,
+    lineId: user.lineId
+  });
 };
 
 exports.logout = (req, res) => {
@@ -65,6 +91,26 @@ exports.verifyOTP = async (req, res) => {
   }
   // OTP ถูกต้อง
   return res.json({ message: 'OTP ถูกต้อง' });
+};
+
+exports.updateProfile = async (req, res) => {
+  try {
+    const userId = req.user.id; // ต้องมี middleware auth ตรวจสอบ token
+    const { name, email, phone, lineId } = req.body;
+    const user = await User.findByIdAndUpdate(
+      userId,
+      { name, email, phone, lineId },
+      { new: true }
+    );
+    res.json({
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
+      lineId: user.lineId
+    });
+  } catch (err) {
+    res.status(500).json({ message: 'Update failed' });
+  }
 };
 
 async function sendOTP(email, otp) {

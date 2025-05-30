@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="/css/styles-con.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/img/logo/1.png">
+    <!-- Custom Menu Styles -->
+    <link rel="stylesheet" href="/css/menu.css">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <!-- Google Fonts -->
@@ -36,49 +38,64 @@
             <!-- Navigation links -->
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav gap-2">
-                    <li class="nav-item"><a href="/" class="nav-link text-white">Home</a></li>
-                    <li class="nav-item"><a href="/#2" class="nav-link text-white">Features</a></li>
-                    <li class="nav-item"><a href="/#3" class="nav-link text-white">Pricing</a></li>
-                    <li class="nav-item"><a href="/#4" class="nav-link text-white">FAQs</a></li>
-                    <li class="nav-item"><a href="/#5" class="nav-link text-white">About</a></li>
+                    <li class="nav-item"><a href="/" class="nav-link text-white"><i class="bi bi-house-door"></i>
+                            Home</a>
+                    </li>
+                    <li class="nav-item"><a href="/courses.html" class="nav-link text-white"><i
+                                class="bi bi-journal-text"></i> หลักสูตร</a></li>
+                    <li class="nav-item"><a href="/free-lessons.html" class="nav-link text-white"><i
+                                class="bi bi-gift"></i> บทเรียนฟรี</a></li>
+                    <li class="nav-item"><a href="/faqs.html" class="nav-link text-white"><i
+                                class="bi bi-question-circle"></i> FAQs</a></li>
+                    <li class="nav-item"><a href="/about.html" class="nav-link text-white"><i class="bi bi-people"></i>
+                            เกี่ยวกับเรา</a></li>
+                    <li class="nav-item"><a href="/#footer" class="nav-link text-white"><i class="bi bi-envelope"></i>
+                            ติดต่อเรา</a></li>
                 </ul>
 
                 <!-- Login & Sign-up & Logout & Username -->
                 <div id="authArea" class="ms-auto d-flex justify-content-center align-items-center">
-                    <a href="/login.html" id="loginBtn"><button class="btn btn-outline-light me-2 px-4 fs-5">เข้าสู่ระบบ</button></a>
-                    <a href="/sign-up.html" id="signupBtn"><button class="btn btn-dark px-4 fs-5">สมัครสมาชิก</button></a>
+                    <a href="/login.html" id="loginBtn"><button
+                            class="btn btn-outline-light me-2 px-4 fs-5">เข้าสู่ระบบ</button></a>
+                    <a href="/sign-up.html" id="signupBtn"><button
+                            class="btn btn-dark px-4 fs-5">สมัครสมาชิก</button></a>
 
                     <!-- Profile Icon -->
-                    <div class="dropdown ms-3 d-none" id="profileMenu">
-                        <a href="#" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="/img/profile/default.png" alt="Profile" class="rounded-circle" width="44" height="44"
-                                style="object-fit:cover;">
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="profileDropdown"
+                    <div class="profile-menu-wrapper d-none">
+                        <button id="profileDropdown" class="btn p-0" data-bs-toggle="dropdown" aria-expanded="false" type="button">
+                            <img id="navProfileImg" src="/img/profile/panda.png" alt="Profile" class="rounded-circle"
+                                width="44" height="44" style="object-fit:cover;">
+                        </button>
+                        <div class="profile-menu-box dropdown-menu dropdown-menu-end shadow" aria-labelledby="profileDropdown"
                             style="min-width: 260px;">
-                            <li class="dropdown-header text-center">
+                            <div class="dropdown-header text-center">
                                 <strong id="profileName">ชื่อผู้ใช้</strong><br>
                                 <small id="profileEmail">email@email.com</small>
-                            </li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="/profile.html"><i class="bi bi-person"></i> โปรไฟล์ผู้ใช้</a>
-                            </li>
-                            <li><a class="dropdown-item" href="/my-courses.html"><i class="bi bi-journal-bookmark"></i>
-                                    หลักสูตรของฉัน</a></li>
-                            <li><a class="dropdown-item" href="/purchase-history.html"><i class="bi bi-receipt"></i>
-                                    ประวัติการสั่งซื้อ</a></li>
-                            <li><a class="dropdown-item" href="/payments.html"><i class="bi bi-credit-card"></i>
-                                    การชำระเงิน/สมาชิก</a></li>
-                            <li><a class="dropdown-item" href="#" id="changeLangBtn"><i class="bi bi-translate"></i>
-                                    เปลี่ยนภาษา</a></li>
-                            <li><a class="dropdown-item" href="/help.html"><i class="bi bi-question-circle"></i>
-                                    ศูนย์ช่วยเหลือ</a></li>
-                            <li><a class="dropdown-item" href="#" id="themeToggleBtn"><i class="bi bi-moon"></i>
-                                    ธีมเว็บไซต์</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item text-danger" href="#" id="logoutMenuBtn"><i class="bi bi-box-arrow-right"></i>
-                                    ออกจากระบบ</a></li>
-                        </ul>
+                            </div>
+                            <div>
+                                <hr class="dropdown-divider">
+                            </div>
+                            <a class="dropdown-item" href="/profile.html"><i class="bi bi-person"></i>
+                                โปรไฟล์ผู้ใช้</a>
+                            <a class="dropdown-item" href="/my-courses.html"><i class="bi bi-journal-bookmark"></i>
+                                หลักสูตรของฉัน</a>
+                            <a class="dropdown-item" href="/purchase-history.html"><i class="bi bi-receipt"></i>
+                                ประวัติการสั่งซื้อ</a>
+                            <a class="dropdown-item" href="/payments.html"><i class="bi bi-credit-card"></i>
+                                การชำระเงิน/สมาชิก</a>
+                            <a class="dropdown-item" href="#" id="changeLangBtn"><i class="bi bi-translate"></i>
+                                เปลี่ยนภาษา</a>
+                            <a class="dropdown-item" href="/help.html"><i class="bi bi-question-circle"></i>
+                                ศูนย์ช่วยเหลือ</a>
+                            <a class="dropdown-item" href="#" id="themeToggleBtn"><i class="bi bi-moon"></i>
+                                ธีมเว็บไซต์</a>
+                            <div>
+                                <hr class="dropdown-divider">
+                            </div>
+                            <a class="dropdown-item text-danger" href="#" id="logoutMenuBtn"><i
+                                    class="bi bi-box-arrow-right"></i>
+                                ออกจากระบบ</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -89,8 +106,8 @@
     <div class="container col-xxl-8 px-4 py-5 mt-3 mb-5">
         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
             <div class="col-12 col-sm-10 col-lg-6">
-                <img src="/img/2.jpg" class="d-block mx-auto img-fluid img-box" alt="Hero Image" width="700" height="500"
-                    loading="lazy">
+                <img src="/img/2.jpg" class="d-block mx-auto img-fluid img-box" alt="Hero Image" width="700"
+                    height="500" loading="lazy">
             </div>
             <div class="col-lg-6">
                 <h1 class="display-2 fw-bold lh-1 mb-3 text-danger">เรียนภาษาจีนออนไลน์กับเรา</h1>
@@ -110,7 +127,8 @@
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
             <!-- Benefit 1 -->
             <div class="feature col text-center">
-                <div class="feature-icon d-inline-flex align-items-center justify-content-center bg-danger text-white rounded-circle px-4 py-3 fs-1 mb-3">
+                <div
+                    class="feature-icon d-inline-flex align-items-center justify-content-center bg-danger text-white rounded-circle px-4 py-3 fs-1 mb-3">
                     <i class="bi bi-laptop"></i>
                 </div>
                 <h3 class="fs-1 text-body-emphasis">เรียนได้ทุกที่ทุกเวลา</h3>
@@ -119,15 +137,18 @@
             </div>
             <!-- Benefit 2 -->
             <div class="feature col text-center">
-                <div class="feature-icon d-inline-flex align-items-center justify-content-center bg-danger text-white rounded-circle px-4 py-3 fs-1 mb-3">
+                <div
+                    class="feature-icon d-inline-flex align-items-center justify-content-center bg-danger text-white rounded-circle px-4 py-3 fs-1 mb-3">
                     <i class="bi bi-wallet2"></i>
                 </div>
                 <h3 class="fs-1 text-body-emphasis">จ่ายครั้งเดียวครบจบ</h3>
-                <p class="text-muted fs-5">ไม่มีค่าใช้จ่ายแอบแฝง สมัครครั้งเดียวเรียนได้ตลอดชีพ พร้อมเนื้อหาที่อัปเดตฟรี!</p>
+                <p class="text-muted fs-5">ไม่มีค่าใช้จ่ายแอบแฝง สมัครครั้งเดียวเรียนได้ตลอดชีพ
+                    พร้อมเนื้อหาที่อัปเดตฟรี!</p>
             </div>
             <!-- Benefit 3 -->
             <div class="feature col text-center">
-                <div class="feature-icon d-inline-flex align-items-center justify-content-center bg-danger text-white rounded-circle px-4 py-3 fs-1 mb-3">
+                <div
+                    class="feature-icon d-inline-flex align-items-center justify-content-center bg-danger text-white rounded-circle px-4 py-3 fs-1 mb-3">
                     <i class="bi bi-person-badge"></i>
                 </div>
                 <h3 class="fs-1 text-body-emphasis">เรียนกับผู้เชี่ยวชาญโดยตรง</h3>
@@ -140,8 +161,8 @@
     <section class="container text-center pb-5 mt-n2 mt-md-0 mb-md-2 mb-lg-4">
         <div class="position-relative rounded-3 overflow-hidden">
             <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
-                <a href="#" class="btn btn-video btn-xl stretched-link" data-bs-toggle="modal" data-bs-target="#videoModal"
-                    aria-label="Play video">
+                <a href="#" class="btn btn-video btn-xl stretched-link" data-bs-toggle="modal"
+                    data-bs-target="#videoModal" aria-label="Play video">
                     <i class="bi bi-play-fill"></i>
                 </a>
             </div>
@@ -167,7 +188,9 @@
     </div>
 
     <!-- Footer -->
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 px-4 bg-danger text-white border-top">
+    <footer
+        class="d-flex flex-wrap justify-content-between align-items-center py-3 px-4 bg-danger text-white border-top"
+        id="footer">
         <div class="col-md-6 d-flex align-items-center">
             <a href="/" class="mb-3 me-2 mb-md-2 mb-lg-2 text-white text-decoration-none lh-1">
                 <img src="/img/logo/1.png" width="70" height="70" alt="Logo">
@@ -186,23 +209,7 @@
     <script src="js/modalVDO.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/side-menu.js"></script>
-    <script>
-    function updateAuthUI() {
-      const token = localStorage.getItem('token');
-      const name = localStorage.getItem('name');
-      document.getElementById('logoutBtn').classList.toggle('d-none', !token);
-      document.getElementById('loginBtn').style.display = token ? 'none' : '';
-      document.getElementById('signupBtn').style.display = token ? 'none' : '';
-      document.getElementById('userName').textContent = (token && name) ? `สวัสดี, ${name}` : '';
-    }
-    document.getElementById('logoutBtn').onclick = function() {
-      localStorage.removeItem('token');
-      localStorage.removeItem('name');
-      updateAuthUI();
-      window.location.href = '/login.html';
-    };
-    updateAuthUI();
-    </script>
+    <script src="js/profile.js"></script>
 </body>
 
 </html>

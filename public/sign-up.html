@@ -24,18 +24,20 @@
             </button>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav gap-2">
-                    <li class="nav-item"><a href="/index.html" class="nav-link text-white">Home</a></li>
-                    <li class="nav-item"><a href="/index.html#2" class="nav-link text-white">Features</a></li>
-                    <li class="nav-item"><a href="/index.html#3" class="nav-link text-white">Pricing</a></li>
-                    <li class="nav-item"><a href="/index.html#4" class="nav-link text-white">FAQs</a></li>
-                    <li class="nav-item"><a href="/index.html#5" class="nav-link text-white">About</a></li>
+                    <li class="nav-item"><a href="/" class="nav-link text-white"><i class="bi bi-house-door"></i>
+                            Home</a>
+                    </li>
+                    <li class="nav-item"><a href="/courses.html" class="nav-link text-white"><i
+                                class="bi bi-journal-text"></i> หลักสูตร</a></li>
+                    <li class="nav-item"><a href="/free-lessons.html" class="nav-link text-white"><i
+                                class="bi bi-gift"></i> บทเรียนฟรี</a></li>
+                    <li class="nav-item"><a href="/faqs.html" class="nav-link text-white"><i
+                                class="bi bi-question-circle"></i> FAQs</a></li>
+                    <li class="nav-item"><a href="/about.html" class="nav-link text-white"><i class="bi bi-people"></i>
+                            เกี่ยวกับเรา</a></li>
+                    <li class="nav-item"><a href="/#footer" class="nav-link text-white"><i class="bi bi-envelope"></i>
+                            ติดต่อเรา</a></li>
                 </ul>
-                <div id="authArea" class="ms-auto d-flex justify-content-center">
-                    <a href="/login.html" id="loginBtn"><button class="btn btn-outline-light me-2 px-4 fs-5">เข้าสู่ระบบ</button></a>
-                    <a href="/sign-up.html" id="signupBtn"><button class="btn btn-dark px-4 fs-5">สมัครสมาชิก</button></a>
-                    <button id="logoutBtn" class="btn btn-danger px-4 fs-5 d-none">ออกจากระบบ</button>
-                    <span id="userName" class="text-white ms-3"></span>
-                </div>
             </div>
         </div>
     </header>
@@ -95,7 +97,8 @@
     </main>
 
     <!-- Footer -->
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 px-4 bg-danger text-white border-top">
+    <footer
+        class="d-flex flex-wrap justify-content-between align-items-center py-3 px-4 bg-danger text-white border-top">
         <div class="col-md-6 d-flex align-items-center">
             <a href="/" class="mb-3 me-2 mb-md-0 text-white text-decoration-none lh-1">
                 <img src="/img/logo/1.png" width="70" height="70" alt="Logo">
@@ -111,64 +114,57 @@
 
     <script src="/js/bootstrap.min.js"></script>
     <script>
-    // Toggle password visibility
-    function togglePassword(inputId, iconId) {
-        const input = document.getElementById(inputId);
-        const icon = document.getElementById(iconId);
-        if (input.type === "password") {
-            input.type = "text";
-            icon.classList.remove("bi-eye");
-            icon.classList.add("bi-eye-slash");
-        } else {
-            input.type = "password";
-            icon.classList.remove("bi-eye-slash");
-            icon.classList.add("bi-eye");
+        // Toggle password visibility
+        function togglePassword(inputId, iconId) {
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(iconId);
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("bi-eye");
+                icon.classList.add("bi-eye-slash");
+            } else {
+                input.type = "password";
+                icon.classList.remove("bi-eye-slash");
+                icon.classList.add("bi-eye");
+            }
         }
-    }
 
-    // Auth UI
-    function updateAuthUI() {
-      const token = localStorage.getItem('token');
-      const name = localStorage.getItem('name');
-      document.getElementById('logoutBtn').classList.toggle('d-none', !token);
-      document.getElementById('loginBtn').style.display = token ? 'none' : '';
-      document.getElementById('signupBtn').style.display = token ? 'none' : '';
-      document.getElementById('userName').textContent = token && name ? `สวัสดี, ${name}` : '';
-    }
-    document.getElementById('logoutBtn').onclick = function() {
-      localStorage.removeItem('token');
-      localStorage.removeItem('name');
-      updateAuthUI();
-      window.location.href = '/login.html';
-    };
-    updateAuthUI();
+        // Auth UI
+        function updateAuthUI() {
+            const token = localStorage.getItem('token');
+            const name = localStorage.getItem('name');
+        }
+        updateAuthUI();
 
-    // Register form
-    document.getElementById('registerForm').onsubmit = async function(e) {
-      e.preventDefault();
-      const name = document.getElementById('floatingName').value;
-      const email = document.getElementById('floatingEmail').value;
-      const password = document.getElementById('password').value;
-      const confirmPassword = document.getElementById('confirmPassword').value;
-      if (password !== confirmPassword) {
-        document.getElementById('passwordError').classList.remove('d-none');
-        return;
-      } else {
-        document.getElementById('passwordError').classList.add('d-none');
-      }
-      const res = await fetch('/api/auth/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, password })
-      });
-      const data = await res.json();
-      if (res.ok) {
-        alert('สมัครสมาชิกสำเร็จ! กรุณาเข้าสู่ระบบ');
-        window.location.href = '/login.html';
-      } else {
-        alert(data.message);
-      }
-    };
+        // Register form
+        document.getElementById('registerForm').onsubmit = async function (e) {
+            e.preventDefault();
+            const name = document.getElementById('floatingName').value;
+            const email = document.getElementById('floatingEmail').value;
+            const phone = document.getElementById('floatingPhone').value;
+            const lineId = document.getElementById('floatingLine').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            if (password !== confirmPassword) {
+                document.getElementById('passwordError').classList.remove('d-none');
+                return;
+            } else {
+                document.getElementById('passwordError').classList.add('d-none');
+            }
+            const res = await fetch('/api/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, phone, lineId, password })
+            });
+            const data = await res.json();
+            if (res.ok) {
+                alert('สมัครสมาชิกสำเร็จ! กรุณาเข้าสู่ระบบ');
+                window.location.href = '/login.html';
+            } else {
+                alert(data.message);
+            }
+        };
     </script>
 </body>
+
 </html>

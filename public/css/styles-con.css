@@ -55,11 +55,45 @@ body {
     transition: all 0.3s ease-in-out; /* ทำให้แอนิเมชันนุ่มนวล */
     padding: 8px 15px;
     border-radius: 8px; /* ทำให้ขอบมน */
+    font-size: 1.15rem;
+    font-weight: 500;
+    padding: 0.6rem 1.3rem;
+    border-radius: 2rem;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%; bottom: 8px;
+    width: 0; height: 3px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(.4,2,.6,1);
+    transform: translateX(-50%);
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+    width: 60%;
+    background: #fff;
 }
 
 .navbar-nav .nav-link:hover {
     background-color: rgba(255, 255, 255, 0.2); /* เปลี่ยนพื้นหลังเมื่อนำเมาส์ไปชี้ */
     color: #fff !important; /* เปลี่ยนสีตัวอักษร */
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+    background: #fff;
+    color: #d32f2f !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    text-decoration: none;
 }
 
 /* moldal VDO */
@@ -116,8 +150,3 @@ body {
     height: auto;
 }
 
-/* ตัวอย่าง: ปรับขนาดไอคอนโปรไฟล์ */
-#profileDropdown img {
-  border: 2px solid #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}

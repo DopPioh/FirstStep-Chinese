@@ -1,9 +1,22 @@
 // กำหนด active class ให้กับเมนูที่ตรงกับ URL ปัจจุบัน
-document.querySelectorAll(".navbar-nav .nav-link").forEach(link => {
-    if (link.href === window.location.href) {
-        link.classList.add("active");
+function setActiveNav() {
+  document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+    const href = link.getAttribute('href');
+    if (
+      (href === '/' && window.location.pathname === '/' && !window.location.hash) ||
+      (href.startsWith('/#') && window.location.pathname === '/' && window.location.hash === href.replace('/', ''))
+    ) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
     }
-});
+  });
+}
+
+// เรียกตอนโหลดหน้า
+setActiveNav();
+// เรียกซ้ำเมื่อเปลี่ยน hash (เช่นคลิก "ติดต่อเรา")
+window.addEventListener('hashchange', setActiveNav);
 
 // แสดงชื่อและอีเมลใน dropdown
 document.addEventListener('DOMContentLoaded', function() {
@@ -11,6 +24,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const email = localStorage.getItem('email') || 'email@email.com';
   document.getElementById('profileName').textContent = name;
   document.getElementById('profileEmail').textContent = email;
+
+  const avatar = localStorage.getItem('profileAvatar') || '/img/profile/default.png';
+  const navProfileImg = document.getElementById('navProfileImg');
+  if (navProfileImg) navProfileImg.src = avatar;
 });
 
 // Logout จากเมนู
